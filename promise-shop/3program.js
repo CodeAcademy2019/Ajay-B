@@ -1,16 +1,15 @@
 require('es6-promise');
 
-let reject=()=>{
-    let promise = new Promise(function (fulfill, reject) {
-      // Your solution here
-      setTimeout(()=>reject(new Error('REJECTED!')),300);
-    });
-    let onReject=(error)=>console.log(error.message);
-    promise.then(
-        result => console.log(result), 
-        error => onReject(error) 
-    );
-    return promise;
+const check=(fulfill, reject)=>{
+    setTimeout(()=>reject(new Error('REJECTED!')),300)
 }
+
+const promise = new Promise(check);
+let onReject=(error)=>console.log(error.message);
+promise.then(
+    result => console.log(result), 
+    error => onReject(error) 
+);
+
 //reject();
-module.exports=reject;
+module.exports={check,promise};
