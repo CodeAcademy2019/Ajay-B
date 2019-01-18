@@ -1,7 +1,7 @@
 const test_catch= require('./10program');
 describe('promise', () => {
     it('should throw an error after incrementing counter to 5', () => {
-        return expect(always_throw()).resolves.toEqual('vgj');
+        return expect(test_catch.alwaysThrows()).toThrowError('ON NOES');
     });
     /*it('should get rejected and give error message', () => {
         return expect(throwError({"Task":"Datastructures"})).rejects.toEqual('Unexpected token o in JSON at position 1');

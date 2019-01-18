@@ -24,4 +24,4 @@ let promise=Promise.resolve(iterate(1))
        .catch(onReject)
 
 
-module.exports={promise,console_output,iterate};
+module.exports={promise,console_output,iterate,alwaysThrows};

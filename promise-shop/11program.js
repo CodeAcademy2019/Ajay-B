@@ -1,7 +1,7 @@
 let getPromise1=()=> Promise.resolve('Promise1');
 let getPromise2= ()=>Promise.resolve('promise2');
 var counter=0;
-var output;
+var output=[];
 function all(p1, p2) {
     return new Promise(function (fulfill, reject) {
       let out = [];
@@ -26,7 +26,6 @@ function all(p1, p2) {
     });
   }
   
-
-all(getPromise1(), getPromise2())
-    .then(val=>{console.log(val);output=val;});
-module.exports={output,counter,getPromise1,getPromise2}
+const promise=all(getPromise1(), getPromise2())
+    .then(val=>{console.log(val);return val;});
+module.exports={output,promise}
