@@ -1,5 +1,3 @@
-require('es6-promise');
-
 
 const promise = new Promise(function (fulfill, reject) {
      fulfill('I FIRED!')

@@ -1,16 +1,13 @@
-const fn=require('./5program.js');
-console.log=jest.fn();
+const promise_test=require('./5program.js');
 describe('"promise"',()=>{
     it('"5program.js" should return "PROMISE VALUE" on resolving',()=>{
-        expect.assertions(1);
-        expect(fn.promise).resolves.toEqual('PROMISE VALUE');
+        return expect(promise_test.promise).resolves.toEqual('PROMISE VALUE');
     });
 }
 )
-describe('"5program.js"  prints "MAIN PROGRAM" followed by "PROMISE VALUE" to show that promises.then is executed in the next event loop',()=>{
-    it('should  print "MAIN PROGRAM" followed by "PROMISE VALUE" on resolving',()=>{
-        fn.func();
-        return (expect(console.log).toHaveBeenCalled() && expect(console.log).mock.calls== [['MAIN PROGRAM'],['PROMISE VALUE']]);
+describe('main',()=>{
+    it('should  print "MAIN PROGRAM" before "PROMISE VALUE" on resolving',()=>{
+        return expect(promise_test.main()).toEqual('MAIN PROGRAM');
     
     });
     /*it('should not print "I DID NOT FIRE!" on rejecting',()=>{

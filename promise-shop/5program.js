@@ -1,14 +1,16 @@
-require('es6-promise');
-
 let promise;
-const func=()=>{
+let main=()=>{
 promise = new Promise(function (fulfill, reject) {
   fulfill('PROMISE VALUE');
 });
+let x='';
 promise.then(
-    result => console.log(result)
+    result => {console.log(result);
+     x=result}
 );
 console.log('MAIN PROGRAM');
+x='MAIN PROGRAM'
+return x;
 }
-func();
-module.exports={promise,func};
+main();
+module.exports={promise,main};

@@ -1,18 +1,22 @@
-const fn=require('./8program.js');
-describe('"attachTitle" should prepend "DR. "to its argument',()=>{
-    it('"7program.js" calls function inside promise ',()=>{
+const promise_test=require('./8program.js');
+describe('"attachTitle"',()=>{
+    it('should prepend "DR. " to its argument',()=>{
         //expect.assertions(1);
-        expect(fn.attachTitle('DoLittle')).toEqual('DR. DoLittle');
+        expect(promise_test.attachTitle('DoLittle')).toEqual('DR. DoLittle');
     });
 }
 )
-describe('firstpromise should print "DR. MANHATTAN" on resolving ',()=>{
-    it('promise should call attachTitle',()=>{
-        expect.assertions(1);
-        return expect(fn.promise).resolves.toEqual('MANHATTAN');
+describe('promise1',()=>{
+    it('promise should output "MANHATTAN" on resolving',()=>{
+        return expect(promise_test.promise1).resolves.toEqual('MANHATTAN');
     }
 
     );
-}
+})
+describe('promise2',()=>{
+    it('this promise should output "DR. MANHATTAN" on resolving',()=>{
+        return expect(promise_test.promise2).resolves.toEqual('DR. MANHATTAN');
+    }
 
-)
+    );
+})

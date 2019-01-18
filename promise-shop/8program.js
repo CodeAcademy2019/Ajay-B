@@ -1,6 +1,5 @@
-const attachTitle=(name)=>'DR. '+name;
-
-const promise=Promise.resolve('MANHATTAN');
-//promise.then(val=>attachTitle(val)).then(val=>console.log(val));
-promise.then(attachTitle).then(val=>console.log(val));
-module.exports={promise,attachTitle}
+const attachTitle=(arg) => 'DR. '+arg;
+const promise1=Promise.resolve('MANHATTAN')
+const promise2=promise1.then(attachTitle)
+promise2.then(console.log);
+module.exports={promise1, promise2,attachTitle};

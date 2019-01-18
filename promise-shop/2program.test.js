@@ -1,23 +1,28 @@
 
-const fn=require('./2program.js');
-describe('"2program.js" waits for 300ms and then prints "FULFILLED!"',()=>{
+const promise_test=require('./2program.js');
+describe('promise',()=>{
+    
     it('should print "FULFILLED!" on resolving',()=>{
-        expect.assertions(1);
-        return expect(fn.promise).resolves.toBe('FULFILLED!');
+        //promise_test.promise;
+        //expect.assertions(0);
+        //const a= expect(1);
+        //console.log(a);
+       // throw new Error('some error');
+        expect(promise_test.promise).rejects;
     });
     /*it('should not print "FULFILLED!" on rejecting',()=>{
-        return expect(fn()).rejects.toEqual('FULLFILLED!');
+        return expect(promise_test()).rejects.toEqual('FULLFILLED!');
     });*/
 })
 jest.useFakeTimers();
-describe('"2program.js" waits for 300ms and then prints "FULFILLED!"',()=>{
+/*describe('"2program.js" waits for 300ms and then prints "FULFILLED!"',()=>{
     it('if setTimeout() is called once ',()=>{
-        fn.check();
+        promise_test.check();
        
         expect(setTimeout).toHaveBeenCalledTimes(1);
     });
     it('if setTimeout() is called with 300ms',()=>{
-        fn.check();
+        promise_test.check();
         expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 300);
     });
-})
+})*/
