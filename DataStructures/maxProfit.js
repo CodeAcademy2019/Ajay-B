@@ -7,20 +7,40 @@ let findMaxProfit=(stack)=>{
         cumulativeProfit.push(cumulativeProfit[i-1]+10-stack[i]);
     }
     console.log(cumulativeProfit)
-    return Math.max(...cumulativeProfit);
+    let max=Math.max(...cumulativeProfit);
+    let index=[]
+    for(let i=0;i<cumulativeProfit.length;i++){
+        if(cumulativeProfit[i]===max){
+            index.push(i+1);
+        }
+    }
+    console.log(index);
+    return [Math.max(...cumulativeProfit),...index];
 }
 const main=(testArray)=>{
     if (testArray[i]!==0){
         let j;
         let maxProfitPerStack=[];
+        let index=[];
         console.log(testArray[i]);
         for(j=i;j<i+testArray[i];j++){
             //console.log(testArray[j+1][0]);
-            maxProfitPerStack.push(findMaxProfit(testArray[j+1]));
+            [profit,indices]=findMaxProfit(testArray[j+1]);
+            maxProfitPerStack.push(profit);
+            index.push(indices);
         }
         console.log('profit',maxProfitPerStack);
-        maxProfitPerStack=maxProfitPerStack.filter(x=>x>0);
-        return (maxProfitPerStack.reduce((x,y)=>x+y));
+        console.log('indices',index);
+        
+        for(let i=0;i<maxProfitPerStack.length;i++){
+            if(maxProfitPerStack[i]<0){
+                index.splice(i,1)
+            }
+        }
+        maxProfitPerStack=maxProfitPerStack.filter(x=>x>=0);
+        console.log('profit',maxProfitPerStack);
+        console.log('indices',index);
+        return [maxProfitPerStack.reduce((x,y)=>x+y),index.reduce((x,y)=>x+y)];
     }
     else{
         console.log('No more input');
