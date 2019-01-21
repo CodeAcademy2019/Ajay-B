@@ -47,6 +47,9 @@ const main=(testArray)=>{
         //console.log('indices',index);
         let totalMaxProfit=0;
         for(let i=0;i<maxProfitPerStack.length;i++){
+            if(maxProfitPerStack[i][0]===0){
+                maxProfitPerStack[i][1].push(0);
+            }
             totalMaxProfit+=maxProfitPerStack[i][0];
         }
         //totalMaxProfit=maxProfitPerStack.reduce((x,y)=>x[0]+y[0]);
@@ -88,32 +91,20 @@ const main=(testArray)=>{
         //if(combinationOfBoxes.length>1){
             noOfBoxesTillNow=combinationOfBoxes.map(a=>(a.reduce((x,y)=>x+y)));
         //}
-        return [totalMaxProfit,noOfBoxesTillNow];
+        return [totalMaxProfit,[...new Set(noOfBoxesTillNow)].sort((x,y)=>x-y)];
     }
     else{
         console.log('No more input');
         return 0;
     }
 }
-//console.log(main([2,[1,2,3],[1,2,3]]));
-/*2
-3
-3 10 10 1
-5 10 1 10 1 10
-4 5 15 10 5
 
-11  3  4  11  9  11  9  11  12  7  14  6
-19  16  17  18  19  1  7  5  3  3  11  12  8  9  13  12  11  11  11  2
-3  13  16  17
-14  3  13  13  21  11  12  9  7  5  4  5  12  13  5
-21
-12  14  16  18  19  20  21  22  23  24
-*/
 
 //console.log(main([4,[16,14,12,15,17,18,1,1,1,1],[20,20,10,10,8,18,17,1,1,1],[1, 2, 3, 4, 15, 14, 13, 12, 11, 10, 20, 19, 18, 17, 16],[ 1, 1, 18, 17, 1]]));
 //console.log(main([3,[4,6 ,7 ,12, 15, 4, 11],[5, 9, 8, 12, 6, 7, 14, 6, 10],[10, 5 ,6 ,7 ,12, 17, 10, 8, 12 ,10 ,9]]));
 //console.log(main([3,[19,9,2],[20,11,10,7,1],[18,2]]));
-//Hermanth:console.log(main([3,[19 ,9 ,2],[20,11,10,7,1],[18 ,2]]));
+console.log(main([3,[19 ,9 ,2],[20,11,10,7,1],[18 ,2]]));
 //console.log(main([3,[10,10,1],[10 ,1, 10, 1, 10],[5,15, 10, 5]]));
-console.log(main([4,[3  ,4,  11,  9,  11,  9 , 11 , 12,  7,  14,  6],[16,17,18,19,1,7,5,3,3,11,12,8,9,13,12,11,11,11,2],[13,16,17],[3,13,13,21,11,12,9,7,5,4,5,12,13,5]]));
+//console.log(main([4,[3  ,4,  11,  9,  11,  9 , 11 , 12,  7,  14,  6],[16,17,18,19,1,7,5,3,3,11,12,8,9,13,12,11,11,11,2],[13,16,17],[3,13,13,21,11,12,9,7,5,4,5,12,13,5]]));
+//console.log(main([2,[7,3,10,9,10],[1,2,3,4,10,16,10,4]]));
 module.exports=main;
