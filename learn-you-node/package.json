@@ -1,0 +1,14 @@
+{
+  "name": "learn-you-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "1_helloWorld.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}
