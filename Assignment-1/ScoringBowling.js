@@ -34,37 +34,26 @@ let score=(scoreFrames)=>{
     return scoreFrames.map(x=>x.reduce((a,b)=>a+b,0)).reduce((x,y)=>x+y,0);
    
 }
-/*
-let totalscore=0;
-//let scoreForStrikeOrSpare=(firstThrow,secondThrow,nextFrameFirst,nextFrameSecond)
-let rolls=(...args)=>{
+
+let rolls=(...allRolls)=>{
     let scoreFrames=[];
-    if(validateInput(args)){
+    if(validateInput(allRolls)){
         let i=0;
-        for(i=0;i<args.length;i++){
-            if(isStrike(args[i])){
-                scoreFrames.push([args[i],args[i+1],args[i+2]]);
-                //i+=1;
-            }
-            else if(isSpare(args[i],args[i+1])){
-                scoreFrames.push([args[i],args[i+1],args[i+2]]);
-                i+=1;
-            }
-            else{
-                scoreFrames.push([args[i],args[i+1]]);
-                i+=1;
-            }
+        for(i=0;i<allRolls.length;i++){
+            let framesAndSkip=setOfValuesPerFrame(allRolls[i],allRolls[i+1],allRolls[i+2],allRolls[i+3]);
+            scoreFrames.push(framesAndSkip[0]);
+            i+=framesAndSkip[1];
         }
     }
-    console.log(scoreFrames);
-    scoreFrames=scoreFrames.filter(x=>x.includes(undefined)!==true);
-    console.log(scoreFrames.map(x=>x.reduce((a,b)=>a+b,0)).reduce((x,y)=>x+y,0));
-    
-
+    return scoreFrames;
 }
+let main=(...args)=>{
+    return(score(rolls(...args))); 
+}    
 //console.log(setOfValuesPerFrame(10,10,2,3));
-rolls(10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,10)
-rolls(3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6);
+/*console.log(main(10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,10));
+console.log(main(3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6));
 rolls(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10);
-rolls(6, 4, 3, 0, 10, 10,5, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);*/
-module.exports={validateInput,isStrike,isSpare,setOfValuesPerFrame,score};
+rolls(6, 4, 3, 0, 10, 10,5, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+*/
+module.exports={validateInput,isStrike,isSpare,setOfValuesPerFrame,score,rolls};

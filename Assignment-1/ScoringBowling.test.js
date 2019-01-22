@@ -26,14 +26,28 @@ describe('isSpare',()=>{
     });
 })
 describe('setOfValuesPerFrame',()=>{
-    it('should return the array of scores that are to be considerd while finding the total score of that frame',()=>{
+    it('should return the array of scores that are to be considerd while finding the total score of one frame',()=>{
         expect(scoreBowling.setOfValuesPerFrame(10,10,2,3)[0]).toEqual([10,10,2]);
     })
-    it('should return the array of scores that are to be considerd while finding the total score of that frame',()=>{
+    it('should return the array of scores that are to be considerd while finding the total score of one frame',()=>{
         expect(scoreBowling.setOfValuesPerFrame(9,1,2,3)[0]).toEqual([9,1,2]);
     })
-    it('should not return anything other than the array of scores that are to be considerd while finding the total score of that frame',()=>{
+    it('should not return anything other than the array of scores that are to be considerd while finding the total score of one frame',()=>{
         expect(scoreBowling.setOfValuesPerFrame(9,1,2,3)[0]).not.toEqual([9,1,2,3]);
+    })
+    
+
+})
+
+describe('rolls',()=>{
+    it('should return the array of scores that are to be considerd while finding the total score of all frames',()=>{
+        expect(scoreBowling.rolls(10,10,2,3)).toEqual([[10,10,2],[10,2,3],[2,3]]);
+    })
+    it('should return the array of scores that are to be considerd while finding the total score of all frames',()=>{
+        expect(scoreBowling.rolls(9,1,2,3)).toEqual([[9,1,2],[2,3]]);
+    })
+    it('should not return anything other than the array of scores that are to be considerd while finding the total score of allframes',()=>{
+        expect(scoreBowling.rolls(9,1,2,3)).not.toEqual([[9,1,2]]);
     })
     
 
