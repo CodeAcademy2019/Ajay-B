@@ -25,3 +25,16 @@ describe('isSpare',()=>{
         expect(scoreBowling.isSpare(6,3)).toEqual(false);
     });
 })
+describe('setOfValuesPerFrame',()=>{
+    it('should return the array of scores that are to be considerd while finding the total score of that frame',()=>{
+        expect(scoreBowling.setOfValuesPerFrame(10,10,2,3)).toEqual([10,10,2]);
+    })
+    it('should return the array of scores that are to be considerd while finding the total score of that frame',()=>{
+        expect(scoreBowling.setOfValuesPerFrame(9,1,2,3)).toEqual([9,1,2]);
+    })
+    it('should not return anything other than the array of scores that are to be considerd while finding the total score of that frame',()=>{
+        expect(scoreBowling.setOfValuesPerFrame(9,1,2,3)).not.toEqual([9,1,2,3]);
+    })
+    
+
+})
