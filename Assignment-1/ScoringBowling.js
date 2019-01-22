@@ -1,7 +1,7 @@
 let validateInput=(...args)=>{
-    let noofFrames=args.length/2;
-    if( args.length/2===10){
-        return noofFrames;
+    //let noofFrames=args.length/2;
+    if( args.length===20||args.length===21){
+        return true;
     }else{
         return 'Invalid number of frames';
     }
@@ -19,5 +19,10 @@ let isSpare=(first,second)=>{
     return false;
 }
 //let scoreForStrikeOrSpare=(firstThrow,secondThrow,nextFrameFirst,nextFrameSecond)
+let rolls=(...args)=>{
+    if(validateInput(args)===10){
 
+    }
+
+}
 module.exports={validateInput,isStrike,isSpare};
