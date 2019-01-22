@@ -12,6 +12,12 @@ let isStrike=(first)=>{
     }
     return false;
 }
+let isSpare=(first,second)=>{
+    if(first+second===10){
+        return true;
+    }
+    return false;
+}
 //let scoreForStrikeOrSpare=(firstThrow,secondThrow,nextFrameFirst,nextFrameSecond)
 
-module.exports={validateInput,isStrike};
+module.exports={validateInput,isStrike,isSpare};

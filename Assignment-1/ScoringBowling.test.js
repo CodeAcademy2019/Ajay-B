@@ -17,3 +17,11 @@ describe('isStrike',()=>{
         expect(scoreBowling.isStrike(6)).toEqual(false);
     });
 })
+describe('isSpare',()=>{
+    it('should return "true" if the frame is a spare',()=>{
+        expect(scoreBowling.isSpare(9,1)).toEqual(true);
+    });
+    it('should return "false" if the frame is not a spare',()=>{
+        expect(scoreBowling.isSpare(6,3)).toEqual(false);
+    });
+})
