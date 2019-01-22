@@ -1,6 +1,4 @@
 let validateInput=(...args)=>{
-    //let noofFrames=args.length/2;
-    //array.filter
     if( args.filter(x=>x>10).length===0){
         return true;
     }else{
@@ -19,29 +17,24 @@ let isSpare=(first,second)=>{
     }
     return false;
 }
-//let scoreFrames=[];
 let setOfValuesPerFrame=(...inputs)=>{
     if(isStrike(inputs[0])){
-        return ([inputs[0],inputs[1],inputs[2]]);
+        return ([[inputs[0],inputs[1],inputs[2]],0]);
     }
     else if(isSpare(inputs[0],inputs[1])){
-        return ([inputs[0],inputs[1],inputs[2]]);
+        return ([[inputs[0],inputs[1],inputs[2]],1]);
     }
     else{
-        return ([inputs[0],inputs[1]]);
+        return ([[inputs[0],inputs[1]],1]);
     }
     
+}
+let score=(scoreFrames)=>{
+    scoreFrames=scoreFrames.filter(x=>x.includes(undefined)!==true);
+    return scoreFrames.map(x=>x.reduce((a,b)=>a+b,0)).reduce((x,y)=>x+y,0);
+   
 }
 /*
-let findScore=(...inputs)=>{
-    let score=0;
-    if(isStrike(inputs[0])){
-        score=10+inputs[1]+inputs[2];
-    }else if(isSpare(inputs[0],inputs[1])){
-        score=10+inputs[2]+inputs[3];
-    }
-    
-}
 let totalscore=0;
 //let scoreForStrikeOrSpare=(firstThrow,secondThrow,nextFrameFirst,nextFrameSecond)
 let rolls=(...args)=>{
@@ -69,9 +62,9 @@ let rolls=(...args)=>{
     
 
 }
-console.log(setOfValuesPerFrame(10,10,2,3));*/
-//rolls(10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10)
-//rolls(3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6);
-//rolls(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10);
-//rolls(6, 4, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-module.exports={validateInput,isStrike,isSpare,setOfValuesPerFrame};
+//console.log(setOfValuesPerFrame(10,10,2,3));
+rolls(10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,10)
+rolls(3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6);
+rolls(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10);
+rolls(6, 4, 3, 0, 10, 10,5, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);*/
+module.exports={validateInput,isStrike,isSpare,setOfValuesPerFrame,score};
