@@ -37,23 +37,30 @@ let score=(scoreFrames)=>{
 
 let rolls=(...allRolls)=>{
     let scoreFrames=[];
-    if(validateInput(allRolls)){
+    if(validateInput(...allRolls)){
         let i=0;
         for(i=0;i<allRolls.length;i++){
             let framesAndSkip=setOfValuesPerFrame(allRolls[i],allRolls[i+1],allRolls[i+2],allRolls[i+3]);
             scoreFrames.push(framesAndSkip[0]);
             i+=framesAndSkip[1];
         }
+        return scoreFrames;
+    }else{
+        return 'Invalid input';
     }
-    return scoreFrames;
+    
 }
 let main=(...args)=>{
-    return(score(rolls(...args))); 
+    let scoreFrames=rolls(...args);
+    if(scoreFrames!=='Invalid input'){
+        return(score(scoreFrames)); 
+    }
+    return scoreFrames;
 }    
 //console.log(setOfValuesPerFrame(10,10,2,3));
 /*console.log(main(10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,10));
 console.log(main(3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6));
-rolls(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10);
-rolls(6, 4, 3, 0, 10, 10,5, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-*/
-module.exports={validateInput,isStrike,isSpare,setOfValuesPerFrame,score,rolls};
+console.log(main(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10));
+console.log(main(6, 4, 3, 0, 10, 10,5, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
+console.log(rolls(13,14));*/
+module.exports={validateInput,isStrike,isSpare,setOfValuesPerFrame,score,rolls,main};
