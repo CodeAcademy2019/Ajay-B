@@ -6,4 +6,12 @@ let validateInput=(...args)=>{
         return 'Invalid number of frames';
     }
 }
-module.exports={validateInput};
+let isStrike=(first)=>{
+    if (first===10){
+        return true;
+    }
+    return false;
+}
+//let scoreForStrikeOrSpare=(firstThrow,secondThrow,nextFrameFirst,nextFrameSecond)
+
+module.exports={validateInput,isStrike};
