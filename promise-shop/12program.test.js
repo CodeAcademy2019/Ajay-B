@@ -1,7 +1,7 @@
-const http_request= require('./12program');
+const httpRequest= require('./12program');
 describe('Fetch JSON',()=>{
     it('should fetch data from the URL and parse the data',()=>{
-        return expect(http_request).resolves.toEqual({
+        return expect(httpRequest).resolves.toEqual({
             "squadName" : "Super hero squad",
             "homeTown" : "Metro City",
             "formed" : 2016,

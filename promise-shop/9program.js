@@ -2,8 +2,8 @@ const parsePromised=(input)=> {
      return new Promise( (fulfill, reject)=> {
       try {
         fulfill(JSON.parse(input));
-      } catch (e) {
-        reject(e.message);
+      } catch (error) {
+        reject('unable to parse');
       }
     });
   }
