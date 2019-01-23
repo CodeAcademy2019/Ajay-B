@@ -9,7 +9,7 @@ let getExtensions=(files)=>{
 
     }).map((a)=>{
         requiredFiles.push(a);
-        //console.log(a);
+        console.log(a);
     });
     return requiredFiles;
     //console.log(requiredFiles);
@@ -27,6 +27,6 @@ let filterFiles=(callback)=>{
         }
     })
 }
-filterFiles();
+//filterFiles(callback);
 //console.log(getExtensions(['1.txt','2.txt','3.js']));
 module.exports={filterFiles,getExtensions};
