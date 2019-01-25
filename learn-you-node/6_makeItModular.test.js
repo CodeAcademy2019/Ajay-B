@@ -10,8 +10,17 @@ describe('readFile', () => {
     };
     moduleCode(callback);
   });
+  it('should return the files with the given extensions whose directory path is given in command line argument', (done) => {
+    process.argv = ['node', '6_makeItModular.js', './test/', 'js'];
+    const callback = (value) => {
+      // console.log('string');
+      expect(value).toEqual(['empty.js','test1.js']);
+      done();
+    };
+    moduleCode(callback);
+  });
   it('should return "Invalid input" if there is no filename or filename is error ', (done) => {
-    process.argv = ['node', '4_firstAsyncIO.js', './test/', 'txt'];
+    process.argv = ['node', '6_makeItModular.js', './testFolder/', 'txt'];
     const callback = (value) => {
       expect(value).toEqual('Invalid input');
       done();
